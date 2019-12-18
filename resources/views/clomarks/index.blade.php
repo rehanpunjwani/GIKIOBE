@@ -171,7 +171,7 @@
               <div class="card">
                 <div class="card-header card-header-warning">
                   <h4 class="card-title">Courses Stats #{{$i+1}}</h4>
-                  <p class="card-category">{{$course_name}}</p>
+                  <p class="card-category">{{$course_name[$i]}}</p>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
