@@ -171,7 +171,7 @@
               <div class="card">
                 <div class="card-header card-header-warning">
                   <h4 class="card-title">Courses Stats</h4>
-                  <p class="card-category">--------------------------</p>
+                  <p class="card-category">{{$course_name[$i]}}</p>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
@@ -214,7 +214,7 @@
               <div class="card">
                 <div class="card-header card-header-warning">
                   <h4 class="card-title">Courses Stats</h4>
-                  <p class="card-category">--------------------------</p>
+                  <p class="card-category">{{$course_name}}</p>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">

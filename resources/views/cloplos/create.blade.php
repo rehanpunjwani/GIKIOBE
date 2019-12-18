@@ -93,6 +93,12 @@
               <p>Add Course</p>
             </a>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{{url('./cloplos' )}}">
+              <i class="material-icons">content_paste</i>
+              <p>Clo Plo Plan</p>
+            </a>
+          </li>
             </ul>
       </div>
     </div>
@@ -191,22 +197,42 @@
               <label for="course_id">Course Code</label>
               <input type="text" class="form-control" name="course_id"/>
           </div>
-
           <div class="form-group">
+              <label for="course_id">Instructor ID</label>
+              <input type="text" class="form-control" name="instructor_id"/>
+          </div>
+
+          <!-- <div class="form-group">
               <label for="clo_id">CLO ID</label>
               <input type="text" class="form-control" name="clo_id"/>
-          </div>
+          </div> -->
+          <label for="clo_id">CLO ID</label>
+    <div class="col-md-6">
+        <select name="clo_id" class="form-control" >
+        @foreach($clo as $clos)
+            <option value="{{$clos->clo_id}}">{{$clos->clo_name}}</option>
+        @endforeach
+        </select> 
+    </div>
 
-          <div class="form-group">
-              <label for="plo_id">PLO ID</label>
+          <!-- <div class="form-group">
+             
               <input type="text" class="form-control" name="plo_id"/>
-          </div>
+          </div> -->
+          <label for="plo_id">PLO ID</label>
+    <div class="col-md-6">
+        <select name="plo_id" class="form-control" >
+        @foreach($plo as $plos)
+            <option value="{{$plos->plo_id}}">{{$plos->plo_name}}</option>
+        @endforeach
+        </select> 
+    </div>
           <div class="form-group">
               <label for="deg_year_id">Degree Year ID</label>
               <input type="text" class="form-control" name="deg_year_id"/>
           </div>
                                  
-          <button type="submit" class="btn btn-primary-outline">Add contact</button>
+          <button type="submit" class="btn btn-success">Add </button>
       </form>
     </div>
 </div>

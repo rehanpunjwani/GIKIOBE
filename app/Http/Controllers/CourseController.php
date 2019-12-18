@@ -27,7 +27,9 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('courses.create');
+        $courses = DB::table('courses')->select('course_id')->get();
+    
+        return view('courses.create',compact('courses'));
     }
 
     /**

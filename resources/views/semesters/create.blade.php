@@ -106,7 +106,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#pablo">Instructor's Dashboard</a>
+            <a class="navbar-brand" href="#pablo">Admin's Dashboard</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -173,7 +173,7 @@
           
         <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Marks Distribution</h4>
+                  <h4 class="card-title">Add Semester</h4>
                 </div>
                 <div class="card-body">
                 <div class="row">
@@ -191,19 +191,29 @@
         @endif
         <form method="post" action="{{ route('semesters.store') }}">
           @csrf
-          <div class="form-group">
+          <!-- <div class="form-group">
                 <label for="semester_type">Semester Type</label>
                 <input type="text" class="form-control" name="semester_type" >
-            </div>
-            <div class="form-group">
+            </div> -->
+            <label for="semester_type">Semester Type</label>
+    <div class="form-group">
+        <select name="semester_type" class="form-control" >
+            <option value="FALL">FALL</option>
+            <option value="SPRING">SPRING</option>
+        </select> 
+        </div>
+            
             
             <div class="form-group">
                 <label for="semester_year">Semester Year</label>
-                <input type="text" class="form-control" name="semester_year"  >
+                <input type="year" class="form-control" name="semester_year"  >
             </div>
+   
+            
+
 
                      
-          <button type="submit" class="btn btn-primary-outline">Add contact</button>
+          <button type="submit" class="btn btn-success">Add Semester</button>
       </form>
     </div>
 </div>
@@ -321,6 +331,6 @@
   </div>
     </body>
  
-
+   
 
 </html>

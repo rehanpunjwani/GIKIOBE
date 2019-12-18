@@ -19,20 +19,21 @@ class CourseMarksController extends Controller
         //
         $cid =Auth::id();
         // $id = DB::select("select sem_course_id  from instructor_courses where instructor_id='$cid' ")->value();
-        $id =  DB::table('instructor_courses')->where('instructor_id', $cid)->value('sem_course_id');
+        $id =  DB::table('instructor_courses')->select('sem_course_id')->where('instructor_id', $cid)->get();
+
 
         // $data = DB::table('courses_marks_scheme')->get();
         // $data = DB::select('select * from student_clo_marks');
-        if(is_array($id)){
-            $size = count($id);
+     
        
         $size = count($id);
 
  
         for ($i = 0; $i < $size; $i++)
-        { $a  = $id[$i]->semester_course_id;
-            $courses = DB::table('courses_marks_schemes')->where('semester_course_id',$a)->get();
-     
+        { $a  = $id[$i]->sem_course_id;
+            $courses[$i] = DB::table('courses_marks_schemes')->where('semester_course_id',$a)->get();
+            $course_name[$i] = DB::table('course_id_view')->where('semester_course_id', $a)->value('course_id');
+
         // $data = DB::table('courses_marks_scheme')->get();
         // $data = DB::select('select * from student_clo_marks');
         
@@ -41,13 +42,10 @@ class CourseMarksController extends Controller
         
         }
 
-    }
-    else{
-        $courses = DB::table('courses_marks_schemes')->where('semester_course_id',$id)->get();
-
-
-    }
-        return view('coursesmarks.index', compact('courses'));
+    
+   
+    
+        return view('coursesmarks.index', compact(['courses', 'course_name']));
     }
 
     /**

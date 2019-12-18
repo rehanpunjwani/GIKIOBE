@@ -19,6 +19,7 @@ class CloPloController extends Controller
       
         $id =  DB::table('instructors')->select('instructor_faculty')->where('instructor_id', $cid)->value('instructor_faculty');
         $courses =  DB::table('clo_plo_view')->where('offered_by_faculty', $id)->get();
+        
     
 
         return view('cloplos.index', compact('courses'));
@@ -31,7 +32,11 @@ class CloPloController extends Controller
      */
     public function create()
     {
-        return view('cloplos.create');
+        $plo = DB::table('plo_details')->get();
+        $clo = DB::table('clo_details')->get();
+
+        //  return $plo;    
+        return view('cloplos.create',compact(['plo','clo']));
     }
 
     /**
@@ -43,11 +48,14 @@ class CloPloController extends Controller
     public function store(Request $request)
     {
          //
+         
          $request->validate([
             'clo_id'=>'required',
             'plo_id'=>'required',
             'deg_year_id'=>'required',
             'course_id'=>'required',
+            'instructor_id'=>'required',
+
             
             // 'job_title'=>'required'
         ]);
@@ -59,11 +67,15 @@ class CloPloController extends Controller
             'plo_id'=>  $request->get('plo_id'),
             'deg_year_id'=> $request->get('deg_year_id'),
             'course_id'=> $request->get('course_id'),
+            'instructor_id'=>$request->get('instructor_id'),
        
         ]);
+       
 
-        $sem_course_id = DB::table('clo_plo_view')->select('sem_course_id')->where('course_id',$course->course_id)->value('sem_course_id');
+        $sem_course_id = DB::table('semester_courses')->select('semester_course_id')->where('course_id',$course->course_id)->where('instructor_id',$course->instructor_id)->value('semester_course_id');
         // DB::table('course_clo_marks_schemes')->insert(['sem_course_id' => $sem_course_id,'clo_id'=>  $course->clo_id ]);
+
+     
 
         DB::table('course_clo_marks_schemes')->insert(['sem_course_id' => $sem_course_id,'clo_id'=>  $course->clo_id ]);
 
@@ -114,13 +126,13 @@ class CloPloController extends Controller
         ]);
 
         $course = CloPlo::find($row_id);
-        $course->clo_id =  $request->get('clo_id');
-        $course->plo_id = $request->get('plo_id');
+        $clo_id =  $request->get('clo_id');
+        $plo_id = $request->get('plo_id');
         
        
  
        DB::table('courses_clo_plos')->where('sem_course_id',$course->sem_course_id)->where('clo_id',$course->clo_id)->where('plo_id',$course->plo_id)->where('deg_year_id',$course->deg_year_id)->update([
-       'clo_id' => $course->clo_id, 'plo_id' => $course->plo_id ]);
+       'clo_id' => $clo_id, 'plo_id' => $plo_id ]);
 
         return redirect('/cloplos');
     }
@@ -134,7 +146,9 @@ class CloPloController extends Controller
     public function destroy($row_id)
     {
         $course = CloPlo::find($row_id);
+        
         DB::table('courses_clo_plos')->where('sem_course_id',$course->sem_course_id)->where('clo_id',$course->clo_id)->where('plo_id',$course->plo_id)->delete();
+        DB::table('course_clo_marks_schemes')->where('sem_course_id' , $course->sem_course_id)->where('clo_id',  $course->clo_id )->delete();
 
         return redirect('/cloplos')->with('success', 'Contact deleted!');
     }

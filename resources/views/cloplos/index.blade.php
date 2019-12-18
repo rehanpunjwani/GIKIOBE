@@ -191,6 +191,7 @@ add
                       <th>Course Name</th>
                       <th>CLO ID</th>
                       <th>PLO ID</th>
+                      <th>Instructor ID</th>
                
 
                 
@@ -202,6 +203,7 @@ add
             <td>{{$course->courseName}}</td>
             <td>{{$course->clo_id}} </td>
             <td>{{$course->plo_id}}</td>
+            <td>{{$course->instructor_id}}</td>
           
       
             <td>

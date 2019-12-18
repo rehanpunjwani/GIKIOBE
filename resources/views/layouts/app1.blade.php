@@ -121,6 +121,7 @@ z-index: 999999;
    </body>
 
 
+
 <script src="{{ asset('js/core/jquery.min.js') }}"></script>
   <script src="{{ asset('js/core/popper.min.js') }}"></script>
   <script src="{{ asset('js/core/bootstrap-material-design.min.jsa')}}"></script>

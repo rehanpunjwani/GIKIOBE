@@ -94,7 +94,7 @@
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="{{url('./cloplos'}}">
+            <a class="nav-link" href="{{url('./cloplos')}}">
               <i class="material-icons">content_paste</i>
               <p>Clo Plo Plan</p>
             </a>

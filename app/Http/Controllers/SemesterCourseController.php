@@ -19,7 +19,7 @@ class SemesterCourseController extends Controller
 
         $id = DB::table('latest_semester')->value('semester_id');
         $offered_courses = DB::table('semester_courses')->where('semester_id', $id)->get();
-
+    
         return view('semestercourses.index', compact(['courses','offered_courses']));
 
     }

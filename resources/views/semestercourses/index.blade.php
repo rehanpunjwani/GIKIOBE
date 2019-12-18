@@ -92,6 +92,12 @@
               <p>PLO Transcript</p>
             </a>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./semesters">
+              <i class="material-icons">content_paste</i>
+              <p>Add Semester</p>
+            </a>
+          </li>
             </ul>
       </div>
     </div>

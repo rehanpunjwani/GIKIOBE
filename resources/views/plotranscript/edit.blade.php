@@ -106,7 +106,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#pablo">Instructor's Dashboard</a>
+            <a class="navbar-brand" href="#pablo">Admin's Dashboard</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -174,7 +174,12 @@
               <div class="card">
                 <div class="card-header card-header-warning">
                   <h4 class="card-title">PLO Transcript </h4>
+                  @if($courses)
                   <p class="card-category">Reg:{{$courses[0]->student_id}}</p>
+                  @else
+                  <p class="card-category">Not Found</p>
+                  @endif
+
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">

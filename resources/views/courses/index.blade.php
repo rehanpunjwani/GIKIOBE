@@ -199,13 +199,13 @@ add
             <td>
                 <a href="{{ route('courses.edit',$course->row_id)}}" class="btn btn-primary">Edit</a>
             </td>
-            <td>
+            <!-- <td>
                 <form action="{{ route('courses.destroy', $course->row_id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
-            </td>
+            </td> -->
             </tr>
                       @endforeach
                     </tbody>

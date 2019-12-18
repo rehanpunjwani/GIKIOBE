@@ -214,22 +214,35 @@
                 <input type="text" class="form-control" name="semester_no" >
             </div>
          
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="semester_type">Semester Type</label>
                 <input type="text" class="form-control" name="semester_type"  >
-            </div>
+            </div> -->
+            <label for="semester_type">Semester Type</label>
+    <div class="form-group">
+        <select name="semester_type" class="form-control" >
+            <option value="FALL">FALL</option>
+            <option value="SPRING">SPRING</option>
+        </select> 
+        </div>
+    <!-- </div>
             <div class="form-group">
                 <label for="pre_requisite_course">Pre Requisite Course Code</label>
                 <input type="text" class="form-control" name="pre_requisite_course" >
-            </div>
-            <div class="form-group">
-                <label for="pre_requisite_course">Pre Requisite Course Code</label>
-                <input type="text" class="form-control" name="pre_requisite_course" >
-            </div>
+            </div> -->
+            <label for="pre_requisite_course">Pre Requisite Course Code</label>
+    <div class="form-group">
+        <select name="pre_requisite_course" class="form-control" >
+        <option value="">None</option>
+        @foreach($courses as $course)
+            <option value="{{$course->course_id}}">{{$course->course_id}}</option>
+        @endforeach
+        </select> 
+    </div>
 
 
                      
-          <button type="submit" class="btn btn-success">Add contact</button>
+          <button type="submit" class="btn btn-success">Add Course</button>
       </form>
     </div>
 </div>

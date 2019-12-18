@@ -16,6 +16,7 @@ class CloPlo extends Model
         'clo_id',
         'plo_id',
         'deg_year_id',
+        'instructor_id',
 
               
     ];

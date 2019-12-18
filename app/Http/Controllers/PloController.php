@@ -19,7 +19,7 @@ class PloController extends Controller
     public function fun(Request $request)
     {
         $id = $request->input('student_id');
-        $courses = DB::select('select * from plo_trascript_view'); 
+        $courses = DB::select("select * from plo_trascript_view where student_id = '$id'"); 
         return view('plotranscript.edit', compact('courses'));
 
     }
